@@ -37,7 +37,7 @@
           :href="person.contact.website">
 
           <div class="block-marged txt-full-white">
-            <i class="fa fa-globe contact-icon"></i>
+            <i class="fas fa-globe contact-icon"></i>
             {{ person.contact.website }}
           </div>
         </a>
@@ -46,7 +46,7 @@
           :href="'https://github.com/' + person.contact.github"
           class="external-link">
 
-          <i class="fa fa-github contact-icon"></i>
+          <i class="fab fa-github contact-icon"></i>
           <span class="block-marged txt-full-white">
             {{ person.contact.github }}
           </span>
@@ -177,7 +177,7 @@
         class="contributions-section section">
 
         <div class="icon">
-          <i class="fa fa-heart font-awesome-icons"></i>
+          <i class="fas fa-heart font-awesome-icons"></i>
           <span class="section-headline"> {{lang.contributions}} </span>
         </div>
 
@@ -194,6 +194,31 @@
           </a>
         </div>
       </div>
+
+      <div v-if="person.volunteer"
+        class="volunteer-section section">
+
+        <div class="icon">
+          <i class="fas fa-hand-holding-heart font-awesome-icons"></i>
+          <span class="section-headline"> {{lang.volunteer}} </span>
+        </div>
+
+        <div class="section-content-grid">
+          <a v-for="(volunteer, index) in person.volunteer" :key="index"
+            :href="volunteer.url"
+            class="section-content__item-grid">
+
+            <span class="section-content__header"> {{ volunteer.name }} </span>
+            <span class="section-content__subheader"> {{ volunteer.organisation }}</span>
+            <div class="section-content__text">{{ volunteer.timeperiod }}</div>
+            <span class="section-content__text"> {{ volunteer.description }} </span>
+            <span class="section-content__text--light" style="word-break: break-all;">
+              {{ volunteer.url }}
+            </span>
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -209,7 +234,7 @@ export default Vue.component(name, getVueOptions(name));
 
 <style lang="less" scoped>
 
-@accent-color: #A800FA;
+@accent-color: #037af5;
 
 .resume {
   display: flex;
